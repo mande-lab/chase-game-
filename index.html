@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chase Game - Escape or Pursue!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div id="game-container">
+        <!-- Level transition overlay -->
+        <div id="level-transition">
+            <h2>Level Complete!</h2>
+            <p>Get ready for the next challenge...</p>
+            <button id="next-level-btn" class="btn btn-secondary">Continue</button>
+        </div>
+        
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <header>
+                <h1>CHASE GAME</h1>
+                <h2>Escape or Pursue!</h2>
+            </header>
+            
+            <p>Control your character and either escape from the AI or catch the other player!</p>
+            <p>Complete levels by surviving for the required time:</p>
+            
+            <div class="info-box" style="margin: 20px 0; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px;">
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                    <div>
+                        <h3>Level Progression</h3>
+                        <p>Level 1: 15 seconds</p>
+                        <p>Level 2: 25 seconds</p>
+                        <p>Level 3: 35 seconds</p>
+                        <p>Level 4: 50 seconds</p>
+                    </div>
+                    <div>
+                        <h3>Game Rules</h3>
+                        <p>Fail at any level = Start over!</p>
+                        <p>Complete all levels = Win!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <button id="pvc-btn" class="btn">Player vs Computer</button>
+                <button id="pvp-btn" class="btn btn-secondary">Player vs Player</button>
+            </div>
+            
+            <div id="instructions">
+                <h3>How to Play</h3>
+                <p>Player 1: Use <strong>Arrow Keys</strong> to move</p>
+                <p>Player 2: Use <strong>WASD Keys</strong> to move</p>
+                <p>Collect <span style="color: #00ff87">power-ups</span> for speed boosts!</p>
+                <p>Avoid obstacles and stay within the arena!</p>
+            </div>
+        </div>
+        
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div id="level-indicator">Level: <span id="current-level">1</span></div>
+            
+            <h2 id="game-mode-title">Player vs Computer</h2>
+            
+            <div id="level-progress">
+                <div id="progress-bar"></div>
+            </div>
+            
+            <div id="game-info">
+                <div class="info-box">
+                    <div class="info-label">TIME</div>
+                    <div id="timer" class="info-value">0</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">SCORE</div>
+                    <div id="score" class="info-value">0</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">REQUIRED</div>
+                    <div id="required-time" class="info-value">15s</div>
+                </div>
+            </div>
+            
+            <div id="game-arena">
+                <!-- Player elements will be added here -->
+                <div id="player1" class="player"></div>
+                <div id="player2" class="player"></div>
+                <!-- Obstacles and power-ups will be added dynamically -->
+            </div>
+            
+            <div id="controls">
+                <div class="control-group">
+                    <h3>Player 1 (Red)</h3>
+                    <p>Move: Arrow Keys</p>
+                </div>
+                <div class="control-group">
+                    <h3>Player 2 (Blue)</h3>
+                    <p id="player2-controls">Move: WASD Keys</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen">
+            <h2>GAME OVER</h2>
+            <div id="result-message">You survived for 0 seconds!</div>
+            <div id="level-reached">Level reached: 1</div>
+            <div id="final-score">Score: 0</div>
+            
+            <div id="controls">
+                <div class="control-group">
+                    <h3>Time</h3>
+                    <p id="final-time">0s</p>
+                </div>
+                <div class="control-group">
+                    <h3>Level</h3>
+                    <p id="final-level">1</p>
+                </div>
+                <div class="control-group">
+                    <h3>Score</h3>
+                    <p id="final-score-value">0</p>
+                </div>
+            </div>
+            
+            <button id="play-again-btn" class="btn">Play Again</button>
+            <button id="menu-btn" class="btn btn-secondary">Main Menu</button>
+        </div>
+        
+        <!-- Win Screen -->
+        <div id="win-screen" class="screen">
+            <h2>CONGRATULATIONS!</h2>
+            <div id="win-message">You Completed All Levels!</div>
+            <div id="win-level">Level 4 completed!</div>
+            <div id="win-score">Final Score: 0</div>
+            
+            <div id="controls">
+                <div class="control-group">
+                    <h3>Total Time</h3>
+                    <p id="total-time">0s</p>
+                </div>
+                <div class="control-group">
+                    <h3>Final Level</h3>
+                    <p>4</p>
+                </div>
+                <div class="control-group">
+                    <h3>Final Score</h3>
+                    <p id="win-final-score">0</p>
+                </div>
+            </div>
+            
+            <button id="win-play-again-btn" class="btn btn-win">Play Again</button>
+            <button id="win-menu-btn" class="btn btn-secondary">Main Menu</button>
+        </div>
+    </div>
+
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
